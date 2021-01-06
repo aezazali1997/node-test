@@ -31,7 +31,8 @@ __*rows*__ is an array of objects with size **n** and it contains distance from 
 Visually this means 
 
 
-__*elements*__ inside each __*rows*__ object is an array of size **m** which contains some distances
+__*elements*__ inside each __*rows*__ object is an array of size **m** which contains some distances.
+
 if __*i*__ is an arbitrary index in __*rows*__ then __*elements*__ will have this data
 
 		[   
