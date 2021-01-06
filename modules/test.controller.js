@@ -98,7 +98,6 @@ const solution = () => {
             and the is not allocated a route */
             if (calculations.customersRemaining < 2 && !calculations.dosfec[i].allocated) {
               /* Set this customer to be closest to the store */
-              log('x');
               closest = i;
             } else if (
               /* If the distance of the last selected closest customer
@@ -112,12 +111,10 @@ const solution = () => {
             }
           }
           log(closest);
-          log(`Allocated 1 ${calculations.dosfec[closest].allocated}`);
           /* Set the route status for  customer that was found
           to be the closest to the store to be true i.e. A route
           was found found for this individual customer */
           calculations.dosfec[closest].allocated = true;
-          log(`Allocated 2 ${calculations.dosfec[closest].allocated}`);
           /* Set the route number to this customer */
           calculations.dosfec[closest].routeNumber = calculations.routeNumber;
           /* Set the total distance of the current route to be distance of this route just created  */
