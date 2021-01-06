@@ -42,7 +42,7 @@ if __*i*__ is an arbitrary index in __*rows*__ then __*elements*__ will have thi
 		{distance,duration,status} //Distance of origin_addresses[i] to destination_addresses[3]		]
 
 ### Problem
-1. The route from the stores to customers are being calculated as of right now and so are the delvery charges. We need to find out if there is a customer close to last customer that was assigned a route such that the total distance of the route does not exceed the max route length which has been already determined in code as __*maxRouteLength*__.
+1. The route from the stores to customers are being calculated as of right now and so are the delivery charges. We need to find out if there is a customer close to last customer that was assigned a route such that the total distance of the route does not exceed the max route length which has been already determined in code as __*maxRouteLength*__.
 2. To calculate the delivery charges for each route
 
 ### Current Result
