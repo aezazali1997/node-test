@@ -1,7 +1,7 @@
 # Test for node
 > This is a description of the test for node js
 ## Instructions for installing
-There is no node modules being used.
+There are no node modules being used.
 Only do a `git clone` and cd into the project folder.
 And run `npm run start` or `node app.js`
 
@@ -13,6 +13,7 @@ And run `npm run start` or `node app.js`
 	4. elements
 	5. distance
 	6. duration
+    7. customers
 __*origin_addresses*__ is an array of addresses with length **n = 5** which comprises of 5 addresses. First addresses is an address of a store. and rest 4 are the customers that have placed an order from that store.
 
 	[store, customerA, customerB, customerC, customerD]

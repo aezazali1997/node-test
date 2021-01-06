@@ -1,0 +1,11 @@
+{
+  "name": "nodejs.test.riders",
+  "version": "1.0.0",
+  "description": "Test for node js problem solving",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Abdul Haseeb",
+  "license": "ISC"
+}
