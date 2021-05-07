@@ -94,7 +94,7 @@ if __*i*__ is an arbitrary index in __*rows*__ then __*elements*__ will have thi
 
     [
        {
-          "totalLength":"4.93 miles from Store.",
+          "totalLength":"5.5 miles from Store.",
           "route":[
              {
                 "customer":"customerC",
