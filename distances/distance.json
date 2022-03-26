@@ -16,10 +16,16 @@
       "12160 Technology Dr., Eden Prairie, MN 55344, USA",
       "16934 Glory Ln, Eden Prairie, MN 55344, USA" ],
    "rows":
-    [ { "elements":
-         [ { "distance": { "text": "4.6 mi", "value": 7374 },
+    [ 
+      { "elements":
+         [ 
+        
+
+           { "distance": { "text": "4.6 mi", "value": 7374 },
              "duration": { "text": "9 mins", "value": 558 },
              "status": "OK" },
+          
+          
            { "distance": { "text": "5.0 mi", "value": 8021 },
              "duration": { "text": "11 mins", "value": 641 },
              "status": "OK" },
@@ -28,9 +34,11 @@
              "status": "OK" },
            { "distance": { "text": "4.6 mi", "value": 7374 },
              "duration": { "text": "9 mins", "value": 558 },
-             "status": "OK" } ] },
+             "status": "OK" } ]
+      },
       { "elements":
-         [ { "distance": { "text": "1 ft", "value": 0 },
+         [ 
+           { "distance": { "text": "1 ft", "value": 0 },
              "duration": { "text": "1 min", "value": 0 },
              "status": "OK" },
            { "distance": { "text": "1.8 mi", "value": 2908 },

@@ -56,6 +56,7 @@ const calculateCharges = (routeLength) => {
   };
 
 const solution = () => {
+    const METER_TO_MILE=1609.344 
     log('start of solution');
     const data =  readDistances();
     const {origin_addresses:originAddresses,
@@ -64,10 +65,14 @@ const solution = () => {
            customers
         } = data;
     const solution = [];
+
     identifySameOrigins(distances);
      /* 5 miles */
     const maxRouteLength = 8046 + (8046 * 0.3); // meters
+    console.log('max route length',maxRouteLength);
     /* Parent Object */
+
+
     const calculations = {
         /* Distances of store from each customer */
         dosfec: distances[0].elements,
@@ -88,7 +93,11 @@ const solution = () => {
         /* Current Route */
         currentRoute: [],
       };
+
+
+        let routes = [];
       while (calculations.customersRemaining > 0) {
+      let storeDistanceAllocated = true;
         if (calculations.prevDistance === 0) {
           /* Find the customer closest to the store */
           // Set the first customer to be the closest by default
@@ -96,16 +105,22 @@ const solution = () => {
           for (let i = 0; i < calculations.nod; i += 1) {
             /* If there is only one customer remaining
             and the is not allocated a route */
+           
+           
             if (calculations.customersRemaining < 2 && !calculations.dosfec[i].allocated) {
+               
+            
               /* Set this customer to be closest to the store */
               closest = i;
             } else if (
               /* If the distance of the last selected closest customer
               is greater than or equal to the current customer */
+              
               calculations.dosfec[closest].distance.value
              >= calculations.dosfec[i].distance.value
              /* And of the the current customer is not allocated a route */
              && calculations.dosfec[i].allocated !== true) {
+               
               /* Set the current customer in the loop to be the closest */
               closest = i;
             }
@@ -133,12 +148,55 @@ const solution = () => {
           
           calculations.lastAllocated = closest;
         } else if (calculations.prevDistance > 0) {
+          
+          let total_miles = 0;
+          let nextCDistance=0;
+          let nextCIndex=0
+          
+            let routeObj = {}
+              routeObj.customer=customers[calculations.lastAllocated]
+              routeObj.deliveryCharges=calculateCharges(calculations.dosfec[calculations.lastAllocated].distance.value);
+             
+              if(storeDistanceAllocated){
+               routeObj.path = `${(calculations.dosfec[calculations.lastAllocated].distance.value/METER_TO_MILE).toFixed(1)} mi from Store to ${routeObj.customer}`;
+               storeDistanceAllocated=false;
+
+              total_miles=total_miles+Number( (calculations.dosfec[calculations.lastAllocated].distance.value/METER_TO_MILE).toFixed(1));
+
+
+
+              } else{
+               
+                routeObj.path = `${(nextCDistance).toFixed(1)} mi from ${customers[nextCIndex]} to ${routeObj.customer}`;
+                total_miles=total_miles+Number( nextCDistance).toFixed(1);
+
+              }
+            
+              
+              
+              
+              routes.push(routeObj);
+              
+              
+
+              // total_miles=total_miles+Number( (calculations.dosfec[calculations.lastAllocated].distance.value/METER_TO_MILE).toFixed(1));
+              
+              
+              console.log('routes',routes);
+              
+              
+              console.log('total miles',total_miles);
           /* If the current route has at least one customer in it */
           /*
             and there are customers remaining
          */
          /* MAKE THIS VALUE FALSE BEFORE SOLVING. THIS MAKES SURE THAT THE LOOP DOES NOT RUN INFINITELY */  
-         const skipForTest = true;
+         const skipForTest = false;
+
+
+
+
+
 
           if (
             !skipForTest &&
@@ -146,8 +204,51 @@ const solution = () => {
             (calculations.prevDistance < maxRouteLength )
             // Then check if there are customers remaining
             && calculations.customersRemaining) {
+
+
+
+
                 // SOLUTION
-                
+                // maxRouteLength 10459
+
+// distance of each customer from current customer
+            const doecfcc = distances[calculations.lastAllocated+1].elements
+              // console.log('doecfcc',doecfcc);
+              let minDisVal =99999999;
+              let minDisIndex=-1
+              
+              // console.log(calculations.lastAllocated);
+
+
+              for (let i=0; i<doecfcc.length; i+=1){
+              
+              
+                if(i===calculations.lastAllocated){
+                  // skip to compare the distance of current customer with its own location
+                }
+                else{
+                  // console.log()
+                  
+                   if(doecfcc[i].distance.value-calculations.dosfec[calculations.lastAllocated].distance.value < minDisVal)  
+                   minDisVal=doecfcc[i].distance.value-calculations.dosfec[calculations.lastAllocated].distance.value 
+                   nextCIndex=i
+                }
+              }
+              nextCDistance=Number(minDisVal)/Number(METER_TO_MILE)
+              
+              calculations.lastAllocated=nextCIndex
+            
+              calculations.customersRemaining-=1;
+
+
+
+
+
+
+
+
+
+
 
                
           } else {
